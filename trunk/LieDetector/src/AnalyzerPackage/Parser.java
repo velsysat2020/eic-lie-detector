@@ -21,31 +21,37 @@ public class Parser {
 
 		try {
 			Scanner scan = new Scanner(theFile);
-			int timestamp = -1;
-			
+			int timestamp = 0;
+			int linecount = 0;
+			int offset = 5512;
+			int lowFreq = 8, highFreq = 12;// for double sample rate, 16-22
+
 			while (scan.hasNextLine()) {
 				String line = scan.nextLine();
 				// Is this a new snapshot
-				if (line.endsWith(";")) {
-					// new snapshot, clear old one
-					snap = new Snapshot();
-					timestamp = Integer.parseInt(line.substring(0, line.indexOf(";")));
-
-				} else if (line.startsWith("*")) {
-					// done with snapshot
-					response.add(snap);
-
-				} else {
-					Scanner lineScan = new Scanner(line);
-					float frequency = Float.parseFloat(lineScan.next());
-					float intensity = Float.parseFloat(lineScan.next());
-										
-					dp = new DataPoint(intensity, frequency, timestamp);
-					float test = dp.getFrequency();
 				
+				if (linecount % offset >= lowFreq && linecount % offset <= highFreq) {
+					if (linecount % offset == lowFreq) {
+						// new snapshot, clear old one
+						snap = new Snapshot();
+						timestamp++;
+
+					} 
+					
+					float frequency;// = Float.parseFloat(lineScan.next());
+					float intensity = Float.parseFloat(line);
+					
+					frequency = linecount % offset;// count from 8 to 12Hz
+					dp = new DataPoint(intensity, frequency, timestamp);
+
 					snap.addDatapoint(dp);
 					
+					if (linecount % offset == highFreq) {
+						// done with snapshot
+						response.add(snap);
+					}
 				}
+				linecount++;
 
 			}
 

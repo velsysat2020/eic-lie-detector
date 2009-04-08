@@ -39,7 +39,7 @@ public class DataPoint {
 		return timestamp;
 	}
 	 public String toString(){
-  	   return "Datapoint " + intensity + ", " + frequency + ", " + timestamp;
+  	   return "Datapoint " + intensity + ", " + frequency + ", " + timestamp + "\n";
      }
 	
 	

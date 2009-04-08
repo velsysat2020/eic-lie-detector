@@ -2,19 +2,22 @@ package AnalyzerPackage;
 
 import java.util.*;
 
+/*
+ * Ryan McGrath and Erin Hayes Spring 2009
+ * 
+ * Analyzer.java processes snapshots of voice data and makes a judgement on the stress level
+ * of the voice sample by comparing similar power values through the 8-12 Hz Spectrum
+ */
 public class Analyzer {
 	
 	public Analyzer(){
 		
-	}
-	
+	}	
 	public boolean judgement(ArrayList<Snapshot> snapArr){
 		Iterator<Snapshot> iter = snapArr.iterator();
 		int stressed = 0;
 		int unstressed = 0;
-		
-		
-		
+			
 		//test the snapshot to see how many stressed response
 		while(iter.hasNext()){
 			Snapshot snap = iter.next();

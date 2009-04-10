@@ -38,13 +38,20 @@ public class Driver {
 		}
 	}
 
-	public static void runAnalysis() {
+	public static int runAnalysis() {//could also return string
 		Analyzer an = new Analyzer();
+		//String ret = "";
+		int ret = -1;
 		if (an.judgement(response)) {
 			System.out.println("Stressed Response");
+		//	ret.concat("Stressed Response");
+			ret = 0;
 		} else {
 			System.out.println("Unstressed Response");
+		//	ret.concat("Unstressed Response");
+			ret = 1;
 		}
+		return ret;
 	}
 
 }

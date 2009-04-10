@@ -15,6 +15,8 @@ public class GUI extends JPanel implements ActionListener {
 	static private final String newline = "\n";
 	JButton folderButton, anaButton;
 	JTextField jtf;
+	JLabel stress, unstress;
+	JPanel centerPanel;
 	
 		public GUI(){
 			super(new BorderLayout());
@@ -34,9 +36,11 @@ public class GUI extends JPanel implements ActionListener {
 			//Create the test button.
 			anaButton = new JButton("Analyze Question");
 			anaButton.addActionListener(this);
+			stress = new JLabel("Stressed Response");
+			unstress = new JLabel("Unstressed Response");
 			
 			//For layout purposes, put the buttons in a separate panel
-			JPanel centerPanel = new JPanel(); //use FlowLayout
+			centerPanel = new JPanel(); //use FlowLayout
 			centerPanel.add(anaButton);
 			
 			//Add the buttons and the log to this panel.
@@ -66,7 +70,13 @@ public class GUI extends JPanel implements ActionListener {
 		}
 		if(e.getSource() == anaButton){
 			System.out.println("SOMEONE HIT THE OTHER BUTTON");
-			Driver.runAnalysis();
+			if(Driver.runAnalysis() == 0){
+				System.out.println("Stressed Response");
+				centerPanel.add(stress);
+			} else if(Driver.runAnalysis() == 1){
+				System.out.println("Unstressed Response");
+				centerPanel.add(unstress);
+			}
 		}
 	}
 

@@ -1,6 +1,5 @@
 package AnalyzerPackage;
 
-import java.util.ArrayList;
 import java.util.*;
 import java.io.*;
 
@@ -12,10 +11,39 @@ public class Driver {
 	public static ArrayList<Snapshot> response = null;
 
 	public static void main(String[] args) {
-
-		// TODO Auto-generated method stub
-		GUI g = new GUI();
+		
+		String fileHandle = null;
+		//get data file from cmd line params
+		 for (String s: args) {
+	            //assuming only one param
+			 	fileHandle = s;
+	        }
+		 
+		if(fileHandle == null){
+			System.out.println("Error, cmd line parameter not read, exiting");
+			System.exit(0);
+		}
+		
+		//Get GUI ready
+		GUIPopup g = new GUIPopup();
 		g.createAndShowGUI();
+		g.setLocation(400, 400);
+		g.setSize(100, 50);
+
+		readFile(fileHandle);
+		int test = runAnalysis();
+		if(test == 0){
+			GUIPopup.stress.setVisible(true);
+			GUIPopup.unstress.setVisible(false);
+		} else if(test == 1){
+			GUIPopup.unstress.setVisible(true);
+			GUIPopup.stress.setVisible(false);
+		}
+		
+		
+		// TODO Auto-generated method stub
+		//GUI g = new GUI();
+		//g.createAndShowGUI();
 		/*
 		 * // System.out.println("Entering Main."); // Scanner sc = new
 		 * Scanner(System.in); //

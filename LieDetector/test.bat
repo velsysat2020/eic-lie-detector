@@ -1,0 +1,1 @@
+java -jar LieDetector.jar CSV_Stream.csv

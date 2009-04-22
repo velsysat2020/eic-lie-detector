@@ -12,20 +12,15 @@ public class GUIPopup extends JPanel implements ActionListener {
 
 	ArrayList<String> condorFiles = new ArrayList<String>();
 	String dagFile = null;
-	
+	static JFrame frame;
 	static private final String newline = "\n";
-	JButton folderButton, anaButton;
+	JButton folderButton, anaButton, nextButton;
 	JTextField jtf;
 	static JLabel stress, unstress;
-	JPanel centerPanel;
+	JPanel centerPanel, bottomPanel;
 	
 		public GUIPopup(){
 			super(new BorderLayout());
-
-			
-		
-
-			
 			
 			//Create the test button.
 			
@@ -41,11 +36,21 @@ public class GUIPopup extends JPanel implements ActionListener {
 			unstress.setVisible(false);
 			
 			add(centerPanel, BorderLayout.CENTER);
+			
+			nextButton = new JButton("");
+			
+			bottomPanel = new JPanel(); //use FlowLayout
+			bottomPanel.add(nextButton);
+						
+			nextButton.setVisible(false);
+			
+			add(bottomPanel, BorderLayout.SOUTH);
+			
 		}
 	
 		public static void createAndShowGUI() {
 			//Create and set up the window.
-			JFrame frame = new JFrame("Lie Detector v2.0");
+			frame = new JFrame("Lie Detector v2.0");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 			//Add content to the window.
@@ -68,10 +73,16 @@ public class GUIPopup extends JPanel implements ActionListener {
 			if(Driver.runAnalysis() == 0){
 				System.out.println("Stressed Response");
 				centerPanel.add(stress);
+				nextButton.setVisible(true);
 			} else if(Driver.runAnalysis() == 1){
 				System.out.println("Unstressed Response");
 				centerPanel.add(unstress);
+				nextButton.setVisible(true);
 			}
+		}
+		if(e.getSource() == nextButton){
+			System.out.println("NEXT, PLEASE!");
+			frame.setVisible(false);
 		}
 	}
 

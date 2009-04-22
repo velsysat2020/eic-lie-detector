@@ -57,6 +57,7 @@ public class Parser {
 
 		} catch (FileNotFoundException e) {
 			// Error
+			System.out.println("Error: File Not Found.");
 			e.printStackTrace();
 			return null;
 		}

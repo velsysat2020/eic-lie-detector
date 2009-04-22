@@ -30,7 +30,9 @@ public class Driver {
 		g.setLocation(400, 400);
 		g.setSize(100, 50);
 
+
 		readFile(fileHandle);
+
 		int test = runAnalysis();
 		if(test == 0){
 			GUIPopup.stress.setVisible(true);

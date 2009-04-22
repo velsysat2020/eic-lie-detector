@@ -57,6 +57,7 @@ public class GUIPopup extends JPanel implements ActionListener {
 			frame.add(new GUIPopup());
 
 			//Display the window.
+			frame.setBounds(400, 400, 100, 100);
 			frame.pack();
 			frame.setVisible(true);
 		}

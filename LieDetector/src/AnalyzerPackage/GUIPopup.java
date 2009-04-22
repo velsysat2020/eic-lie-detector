@@ -24,11 +24,15 @@ public class GUIPopup extends JPanel implements ActionListener {
 			
 			//Create the test button.
 			
-			stress = new JLabel("Stressed Response");
-			unstress = new JLabel("Unstressed Response");
+			//ImageIcon iconS = createImage("stressed.jpg");//, "Stressed Response");
+			//ImageIcon iconUn = createImage("unstressed.jpg", "Unstressed Response");
+			
+			stress = new JLabel("\nStressed Response");
+			unstress = new JLabel("\nUnstressed Response");
 			
 			//For layout purposes, put the buttons in a separate panel
 			centerPanel = new JPanel(); //use FlowLayout
+			centerPanel.setSize(200, 200);
 			centerPanel.add(stress);
 			centerPanel.add(unstress);
 			
@@ -37,12 +41,12 @@ public class GUIPopup extends JPanel implements ActionListener {
 			
 			add(centerPanel, BorderLayout.CENTER);
 			
-			nextButton = new JButton("");
+			nextButton = new JButton("Next Question");
 			
 			bottomPanel = new JPanel(); //use FlowLayout
 			bottomPanel.add(nextButton);
 						
-			nextButton.setVisible(false);
+			nextButton.setVisible(true);
 			
 			add(bottomPanel, BorderLayout.SOUTH);
 			
@@ -57,7 +61,7 @@ public class GUIPopup extends JPanel implements ActionListener {
 			frame.add(new GUIPopup());
 
 			//Display the window.
-			frame.setBounds(400, 400, 100, 100);
+			frame.setBounds(550, 450, 600, 600);
 			frame.pack();
 			frame.setVisible(true);
 		}

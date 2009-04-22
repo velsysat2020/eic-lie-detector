@@ -27,8 +27,8 @@ public class Driver {
 		//Get GUI ready
 		GUIPopup g = new GUIPopup();
 		g.createAndShowGUI();
-		g.setLocation(400, 400);
-		g.setSize(100, 50);
+		
+		
 
 
 		readFile(fileHandle);

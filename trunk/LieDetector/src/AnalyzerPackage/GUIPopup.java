@@ -37,7 +37,7 @@ public class GUIPopup extends JPanel implements ActionListener {
 			centerPanel.add(unstress);
 			
 			stress.setVisible(false);
-			unstress.setVisible(false);
+			unstress.setVisible(false);//false
 			
 			add(centerPanel, BorderLayout.CENTER);
 			
@@ -77,11 +77,13 @@ public class GUIPopup extends JPanel implements ActionListener {
 			System.out.println("SOMEONE HIT THE OTHER BUTTON");
 			if(Driver.runAnalysis() == 0){
 				System.out.println("Stressed Response");
-				centerPanel.add(stress);
+				//centerPanel.add(stress);
+				stress.setVisible(true);
 				nextButton.setVisible(true);
 			} else if(Driver.runAnalysis() == 1){
 				System.out.println("Unstressed Response");
-				centerPanel.add(unstress);
+				//centerPanel.add(unstress);
+				unstress.setVisible(true);
 				nextButton.setVisible(true);
 			}
 		}

@@ -23,7 +23,7 @@ public class Parser {
 			Scanner scan = new Scanner(theFile);
 			int timestamp = 0;
 			int linecount = 1;
-			int offset = 4000;
+			int offset = 8000;
 			int lowFreq = 8, highFreq = 12;// for double sample rate, 16-22
 
 			while (scan.hasNextLine()) {
